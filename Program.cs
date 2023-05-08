@@ -16,12 +16,17 @@ namespace Programmerings_eksamensprojekt
         public static int scorer = 0;
         public static bool start = true;
         public static int exp = 0;
+        public static double Level = 0;
 
         static void Main(string[] args)
         {
+            exp = 0;
             while (start = true) 
             {
+                point();
                 Console.Clear();
+                Console.WriteLine(Level);
+                Console.WriteLine(exp);
                 string? typeTræning = "";
 
                 Console.WriteLine("Velkommen til fysik træneren");
@@ -61,11 +66,10 @@ namespace Programmerings_eksamensprojekt
 
         static void point()
         {
-            double Level = 1;
-            double constA = 8.7;
-            double constB = -40;
-            int constC = 111;
-            Level = Math.Max(Math.Floor(constA * Math.Log(exp + constC) + constB), 1);
+            double constA = 0.01;
+            double constB = 1;
+            int constC = 450;
+            Level = Math.Max(Math.Floor(constA * Math.Log(exp + constC) + constB), 0);
         }
         static void termodynamik()
         {
@@ -99,6 +103,7 @@ namespace Programmerings_eksamensprojekt
                         string? prøvIgen = "";
                         Console.WriteLine("Du fik " + scorer + "/" + antalSpg + " rigtige. Vil du prøge igen? Y/N");
                         prøvIgen = Console.ReadLine();
+                        scorer = 0;
                         if (string.IsNullOrEmpty(prøvIgen))
                         {
                             return;
@@ -218,8 +223,8 @@ namespace Programmerings_eksamensprojekt
                     Console.WriteLine("Forkert svar. Det korrekte svar er: " + correctAnswer + "\n");
                 }
 
-                exp = scorer * 5;
-                scorer = 0;
+                exp = exp + scorer * 5;
+
 
             }
         }
@@ -256,6 +261,7 @@ namespace Programmerings_eksamensprojekt
                         string? prøvIgen = "";
                         Console.WriteLine("Du fik " + scorer + "/" + antalSpg + " rigtige. Vil du prøge igen? Y/N");
                         prøvIgen = Console.ReadLine();
+                        scorer = 0;
                         if (string.IsNullOrEmpty(prøvIgen))
                         {
                             return;
@@ -375,8 +381,7 @@ namespace Programmerings_eksamensprojekt
                     Console.WriteLine("Forkert svar. Det korrekte svar er: " + correctAnswer + "\n");
                 }
 
-                exp = scorer * 5;
-                scorer = 0;
+                exp = exp + scorer * 5;
 
             }
         }

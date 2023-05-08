@@ -10,18 +10,23 @@ namespace Programmerings_eksamensprojekt
         public string[] choices = { "" };
         public string correctAnswer = "";
         public static int scorer = 0;
+        public static bool start = true;
 
         static void Main(string[] args)
         {
-            string? typeTræning = "";
-       
-            Console.WriteLine("Velkommen til fysik træneren");
-            Console.WriteLine("Hvilken type opgaver vil du lave? Træning eller MC (multiple choice)");
-            typeTræning = Console.ReadLine();
-
-            if (typeTræning?.ToLower() == "mc")
+            while (start = true) 
             {
-                MC();
+                Console.Clear();
+                string? typeTræning = "";
+
+                Console.WriteLine("Velkommen til fysik træneren");
+                Console.WriteLine("Hvilken type opgaver vil du lave? Træning eller MC (multiple choice)");
+                typeTræning = Console.ReadLine();
+
+                if (typeTræning?.ToLower() == "mc")
+                {
+                    MC();
+                }
             }
         }
         
@@ -96,7 +101,7 @@ namespace Programmerings_eksamensprojekt
                         }
                         else
                         {
-                            Main(null);
+                            //Main(null);
                         }
                         return;
                     }

@@ -48,6 +48,11 @@ namespace Programmerings_eksamensprojekt
             }
             
         }
+
+        static void point()
+        {
+
+        }
         static void termodynamik()
         {
             Console.Clear();

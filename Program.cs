@@ -89,10 +89,14 @@ namespace Programmerings_eksamensprojekt
                         {
                             return;
                         }
-                        if (prøvIgen.ToLower() == "y")
+                        if (prøvIgen.ToLower() == "y" || prøvIgen.ToLower() == "yes" || prøvIgen.ToLower() == "ja")
                         {
                             Console.Clear();
                             MC();
+                        }
+                        else
+                        {
+                            Main(null);
                         }
                         return;
                     }
@@ -219,9 +223,9 @@ namespace Programmerings_eksamensprojekt
                     bool erBrugt = false;
                     Random tal = new Random();
                     spørgsmål = tal.Next(1, antalSpg + 1);
-                    for (int j = 0; j < brugteTal.Count; j++)       
+                    for (int j = 0; j < brugteTal.Count; j++)
                     {
-                        if (brugteTal[j] == spørgsmål)              
+                        if (brugteTal[j] == spørgsmål)
                         {
                             erBrugt = true;
                         }
@@ -240,10 +244,14 @@ namespace Programmerings_eksamensprojekt
                         {
                             return;
                         }
-                        if (prøvIgen.ToLower() == "y")
+                        if (prøvIgen.ToLower() == "y" || prøvIgen.ToLower() == "yes" || prøvIgen.ToLower() == "ja")
                         {
                             Console.Clear();
                             MC();
+                        }
+                        else
+                        {
+                            Main(null);
                         }
                         return;
                     }
@@ -350,6 +358,8 @@ namespace Programmerings_eksamensprojekt
                 {
                     Console.WriteLine("Forkert svar. Det korrekte svar er: " + correctAnswer + "\n");
                 }
+
+
             }
         }
     }

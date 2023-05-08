@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq.Expressions;
 using System.Reflection.Emit;
 using System.Reflection.Metadata;
+using System.Runtime.ConstrainedExecution;
 
 // Definerer en namespace til at indeholde klassen "Programmerings_eksamensprojekt"
 namespace Programmerings_eksamensprojekt
@@ -89,54 +90,51 @@ namespace Programmerings_eksamensprojekt
                 double constB = 1;
                 int constC = 450;
                 Level = Math.Max(Math.Floor(constA * Math.Log(exp + constC) + constB), 1);
-            }
+        }
 
-            static void termodynamik()
+
+        static void termodynamik()
+        {
+            Console.Clear(); // Ryd konsolvinduet
+            List<int> brugteTal = new List<int>(); // Opret en liste til at gemme allerede anvendte spørgsmål
+            int spørgsmål = 0; // Opret en variabel til at gemme det aktuelle spørgsmålsnummer
+            int antalSpg = 10; // Definer antallet af spørgsmål i testen
+            for (int i = 0; i < antalSpg + 1; i++) // Loop gennem antallet af spørgsmål plus en ekstra iteration for at kunne vise resultatet i slutningen af testen
             {
-                Console.Clear();
-                List<int> brugteTal = new List<int>();
-                int spørgsmål = 0;
-                int antalSpg = 10;
-                for (int i = 0; i < antalSpg + 1; i++)
-                {
-                    bool h = false;
+                bool h = false;
 
-                    while (!h)
+                while (!h) // Fortsæt med at generere nye tilfældige spørgsmål, indtil et nyt, ikke-brugt spørgsmål er fundet
+                {
+                    bool erBrugt = false;
+                    Random tal = new Random(); // Opret en ny tilfældig generator
+                    spørgsmål = tal.Next(1, antalSpg + 1); // Generér et tilfældigt tal mellem 1 og antallet af spørgsmål inklusiv
+                    for (int j = 0; j < brugteTal.Count; j++)
                     {
-                        bool erBrugt = false;
-                        Random tal = new Random();
-                        spørgsmål = tal.Next(1, antalSpg + 1);
-                        for (int j = 0; j < brugteTal.Count; j++)
+                        if (brugteTal[j] == spørgsmål) // Hvis spørgsmålet allerede er anvendt, skal vi generere et nyt spørgsmål
                         {
-                            if (brugteTal[j] == spørgsmål)
-                            {
-                                erBrugt = true;
-                            }
+                            erBrugt = true;
                         }
-                        if (!erBrugt)
+                    }
+                    if (!erBrugt) // Hvis spørgsmålet ikke er brugt, kan vi fortsætte til næste spørgsmål
+                    {
+                        h = true;
+                        brugteTal.Add(spørgsmål); // Tilføj spørgsmålet til listen over anvendte spørgsmål
+                    }
+                    else if (brugteTal.Count == antalSpg) // Hvis vi har anvendt alle spørgsmålene, er quizzen slut
+                    {
+                        string? prøvIgen = "";
+                        Console.WriteLine("Du fik " + scorer + "/" + antalSpg + " rigtige. Vil du prøve igen? Y/N");
+                        prøvIgen = Console.ReadLine();
+                        scorer = 0;
+                        if (string.IsNullOrEmpty(prøvIgen))
                         {
-                            h = true;
-                            brugteTal.Add(spørgsmål);
+                            return;
                         }
-                        else if (brugteTal.Count == antalSpg)
+                        if (prøvIgen.ToLower() == "y" || prøvIgen.ToLower() == "yes" || prøvIgen.ToLower() == "ja") // Hvis brugeren vil prøve igen, skal vi rydde konsolvinduet og starte quizzen igen
                         {
-                            string? prøvIgen = "";
-                            Console.WriteLine("Du fik " + scorer + "/" + antalSpg + " rigtige. Vil du prøge igen? Y/N");
-                            prøvIgen = Console.ReadLine();
-                            scorer = 0;
-                            if (string.IsNullOrEmpty(prøvIgen))
-                            {
-                                return;
-                            }
-                            if (prøvIgen.ToLower() == "y" || prøvIgen.ToLower() == "yes" || prøvIgen.ToLower() == "ja")
-                            {
-                                Console.Clear();
-                                MC();
-                            }
-                            else
-                            {
-                                //Main(null);
-                            }
+                            Console.Clear();
+                            MC();
+
                             return;
                         }
                     }
@@ -145,6 +143,7 @@ namespace Programmerings_eksamensprojekt
                     string[] choices = { };
                     string correctAnswer = "";
 
+                    // Definer spørgsmål, svarmuligheder og det korrekte svar for hvert spørgsmål
                     switch (spørgsmål)
                     {
                         case 1:
@@ -224,6 +223,7 @@ namespace Programmerings_eksamensprojekt
                             return;
                     }
 
+                    //Udskriver spørgsmålet og spørgsmålsnummer
                     Console.WriteLine("spørgsmål: " + (i + 1) + "\n" + question);
                     foreach (string choice in choices)
                     {
@@ -248,7 +248,7 @@ namespace Programmerings_eksamensprojekt
 
                 }
             }
-
+        }
             static void bevægelse()
             {
                 Console.Clear();

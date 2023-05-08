@@ -343,7 +343,7 @@ namespace Programmerings_eksamensprojekt
                 }
                 else
                 {
-                    //Console.WriteLine("Forkert svar. Det korrekte svar er: " + correctAnswer + "\n");
+                    Console.WriteLine("Forkert svar. Det korrekte svar er: " + correctAnswer + "\n");
                 }
             }
         }

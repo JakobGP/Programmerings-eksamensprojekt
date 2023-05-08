@@ -123,16 +123,26 @@ namespace Programmerings_eksamensprojekt
                     else if (brugteTal.Count == antalSpg) // Hvis vi har anvendt alle spørgsmålene, er quizzen slut
                     {
                         string? prøvIgen = "";
+
+                        //Udskriver antal rigtige
                         Console.WriteLine("Du fik " + scorer + "/" + antalSpg + " rigtige. Vil du prøve igen? Y/N");
+                       
+                        //finder ud af om man vil prøve igen
                         prøvIgen = Console.ReadLine();
                         scorer = 0;
+                        
+                        //Fjerne grøn streg fra prøvIgen
                         if (string.IsNullOrEmpty(prøvIgen))
                         {
                             return;
                         }
+
+                        //Tjekker prøveIgen for at finde ud af om man vil prøve igen
                         if (prøvIgen.ToLower() == "y" || prøvIgen.ToLower() == "yes" || prøvIgen.ToLower() == "ja") // Hvis brugeren vil prøve igen, skal vi rydde konsolvinduet og starte quizzen igen
                         {
                             Console.Clear();
+
+                            //Kører MC() igen
                             MC();
 
                             return;

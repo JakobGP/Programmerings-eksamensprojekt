@@ -1,6 +1,10 @@
 using System;
 using System.Data;
 using System.Linq.Expressions;
+using System.Reflection.Emit;
+using System.Reflection.Metadata;
+
+
 
 namespace Programmerings_eksamensprojekt
 {
@@ -57,8 +61,11 @@ namespace Programmerings_eksamensprojekt
 
         static void point()
         {
-            int level = 1;
-            
+            double Level = 1;
+            double constA = 8.7;
+            double constB = -40;
+            int constC = 111;
+            Level = Math.Max(Math.Floor(constA * Math.Log(exp + constC) + constB), 1);
         }
         static void termodynamik()
         {

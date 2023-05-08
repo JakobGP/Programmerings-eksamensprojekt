@@ -16,17 +16,16 @@ namespace Programmerings_eksamensprojekt
         public static int scorer = 0;
         public static bool start = true;
         public static int exp = 0;
-        public static double Level = 0;
+        public static double Level = 1;
 
         static void Main(string[] args)
         {
-            exp = 0;
             while (start = true) 
             {
                 point();
                 Console.Clear();
-                Console.WriteLine(Level);
-                Console.WriteLine(exp);
+                Console.WriteLine("Level = " + Level);
+                Console.WriteLine("XP = " + exp);
                 string? typeTræning = "";
 
                 Console.WriteLine("Velkommen til fysik træneren");
@@ -69,7 +68,7 @@ namespace Programmerings_eksamensprojekt
             double constA = 0.01;
             double constB = 1;
             int constC = 450;
-            Level = Math.Max(Math.Floor(constA * Math.Log(exp + constC) + constB), 0);
+            Level = Math.Max(Math.Floor(constA * Math.Log(exp + constC) + constB), 1);
         }
         static void termodynamik()
         {

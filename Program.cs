@@ -76,14 +76,13 @@ namespace Programmerings_eksamensprojekt
             // Hvis brugeren ikke vælger en korrekt kategori, udskrives en besked og metoden MC() kaldes igen
             else
             {
-
                 Console.WriteLine("Du har ikke valgt en rigtig kattegori, prøv igen");
                 MC(); // Kalder MC() metoden igen, så brugeren får mulighed for at vælge en korrekt kategori.
             }
         }
 
             // Metoden point() beregner brugerens level ud fra deres erfaring, som er gemt i exp variablen.
-            // Der bruges en formel til at beregne Level ud fra konstanterne constA, constB, og constC samt brugerens erfaring exp.
+            // Der bruges en formel til at beregne Level ud fra konstanterne constA, constB, og constC samt exp.
             static void point()
             {
                 double constA = 0.01;

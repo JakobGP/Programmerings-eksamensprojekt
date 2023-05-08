@@ -11,6 +11,7 @@ namespace Programmerings_eksamensprojekt
         public string correctAnswer = "";
         public static int scorer = 0;
         public static bool start = true;
+        public static int exp = 0;
 
         static void Main(string[] args)
         {
@@ -56,7 +57,8 @@ namespace Programmerings_eksamensprojekt
 
         static void point()
         {
-
+            int level = 1;
+            
         }
         static void termodynamik()
         {
@@ -209,6 +211,8 @@ namespace Programmerings_eksamensprojekt
                     Console.WriteLine("Forkert svar. Det korrekte svar er: " + correctAnswer + "\n");
                 }
 
+                exp = scorer * 5;
+                scorer = 0;
 
             }
         }
@@ -364,6 +368,8 @@ namespace Programmerings_eksamensprojekt
                     Console.WriteLine("Forkert svar. Det korrekte svar er: " + correctAnswer + "\n");
                 }
 
+                exp = scorer * 5;
+                scorer = 0;
 
             }
         }

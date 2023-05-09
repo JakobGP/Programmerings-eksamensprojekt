@@ -439,7 +439,8 @@ namespace Programmerings_eksamensprojekt
 
                     //Tilføjer mere exp
                     exp = exp + scorer * 5;
-
+                    
+                    //test
                 }
             }
     }

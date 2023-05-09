@@ -109,7 +109,7 @@ namespace Programmerings_eksamensprojekt
         public static int CalculateLevel(int experiencePoints)
         { 
             int level = 1;
-            int experienceNeeded = 100; // Amount of experience needed to level up from level 1 to level 2
+            int experienceNeeded = 100; // Mængden af exp fra level 1 til level 2
 
             while (experiencePoints >= experienceNeeded)
             {
@@ -121,11 +121,12 @@ namespace Programmerings_eksamensprojekt
             return level;
         }
 
+        //Udregner mængden af exp der er nødvendig for at level up
         private static int NextLevel(int currentLevel)
         {
-            // Example formula for calculating the amount of experience needed to level up
-            int baseExperienceNeeded = 100; // Amount of experience needed to level up from level 1 to level 2
-            int scalingFactor = 200; // How much harder it gets to level up with each level
+            
+            int baseExperienceNeeded = 100; // Mængden af exp der skal buges fra level 1 til level 2
+            int scalingFactor = 200; // Hvor meget sværre det bliver at level up
             return baseExperienceNeeded + (currentLevel - 1) * scalingFactor;
         }
 

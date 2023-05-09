@@ -39,13 +39,22 @@ namespace Programmerings_eksamensprojekt
 
                 // Udskriver velkomstbesked og spørger brugeren, om de vil træne eller tage en multiple choice quiz
                 Console.WriteLine("Velkommen til fysik træneren");
-                Console.WriteLine("Hvilken type opgaver vil du lave?\na) Træning\nb) MC (multiple choice)");
+                Console.WriteLine("Hvilken type opgaver vil du lave?\na) Træning\nb) MC (multiple choice)\nc) Stop");
                 typeTræning = Console.ReadLine();
 
                 // Hvis brugeren vælger MC, kaldes metoden MC()
                 if (typeTræning?.ToLower() == "mc" || typeTræning?.ToLower() == "b")
                 {
                     MC();
+                }
+                else if (typeTræning?.ToLower() == "træning" || typeTræning?.ToLower() == "a"){
+                    Console.Clear();
+                    Console.WriteLine("Vi har dsv ikke denne funktion lige pt.");
+                    Console.ReadKey(); 
+                }
+                else if (typeTræning?.ToLower() == "stop" || typeTræning?.ToLower() == "c")
+                {
+                    start = false;
                 }
             }
         }
@@ -270,15 +279,17 @@ namespace Programmerings_eksamensprojekt
                 {
                     Console.WriteLine("Korrekt!\n");
                     scorer++;
+                    Console.ReadKey();
                 }
                 else
                 {
                     Console.WriteLine("Forkert svar. Det korrekte svar er: " + correctAnswer + "\n");
+                    Console.ReadKey();
                 }
 
                 //Tilføjer mere exp
                 exp = exp + scorer * 5;
-
+                Console.Clear();
             }
         }
         static void bevægelse()
@@ -431,17 +442,19 @@ namespace Programmerings_eksamensprojekt
                     {
                         Console.WriteLine("Korrekt!\n");
                         scorer++;
+                        Console.Clear();
                     }
                     else
                     {
                         Console.WriteLine("Forkert svar. Det korrekte svar er: " + correctAnswer + "\n");
+                        Console.Clear();
                     }
 
                     //Tilføjer mere exp
                     exp = exp + scorer * 5;
-                    
-                    //test
-                }
+
+                    Console.Clear();
+            }
             }
     }
 }

@@ -23,10 +23,10 @@ namespace Programmerings_eksamensprojekt
    
         static void Main(string[] args)
         {
-            while (start = true)
+            while (start)
             {
                 // Kald på metoden point()
-                point();
+                Level = CalculateLevel(exp); 
 
                 
                 Console.Clear();
@@ -86,12 +86,39 @@ namespace Programmerings_eksamensprojekt
         // Der bruges en formel til at beregne Level ud fra konstanterne constA, constB, og constC samt exp.
         static void point()
         {
-            double constA = 4;
-            double constB = 1;
-            int constC = 800;
-            Level = Math.Max(Math.Floor(constA * Math.Log(exp + constC) + constB), 1);
+            /* 
+             double constA = 0.2; 
+             double constB = 1;
+             int constC = 60;
+             Level = Math.Max(Math.Floor(constA * Math.Log(exp + constC) + constB), 1);
+             constA = constA * 1.1;
+            */
+
+           
         }
 
+        public static int CalculateLevel(int experiencePoints)
+        { 
+            int level = 1;
+            int experienceNeeded = 100; // Amount of experience needed to level up from level 1 to level 2
+
+            while (experiencePoints >= experienceNeeded)
+            {
+            level++;
+            experiencePoints -= experienceNeeded;
+            experienceNeeded = NextLevel(level);
+            }
+
+            return level;
+        }
+
+        private static int NextLevel(int currentLevel)
+        {
+            // Example formula for calculating the amount of experience needed to level up
+            int baseExperienceNeeded = 100; // Amount of experience needed to level up from level 1 to level 2
+            int scalingFactor = 200; // How much harder it gets to level up with each level
+            return baseExperienceNeeded + (currentLevel - 1) * scalingFactor;
+        }
 
         static void termodynamik()
         {
